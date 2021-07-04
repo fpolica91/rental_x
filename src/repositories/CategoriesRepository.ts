@@ -1,5 +1,6 @@
 
 import Category from "../models/Category"
+import ICategoriesRepository from "../interfaces/ICategoryRepository"
 
 interface CreateCategoryDTO {
   name: string;
@@ -7,7 +8,7 @@ interface CreateCategoryDTO {
 }
 
 
-export default class CategoriesRepository {
+export default class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
@@ -29,6 +30,7 @@ export default class CategoriesRepository {
     console.log(this.categories)
     return category
   }
+
   public list(): Category[] {
     return this.categories;
   }

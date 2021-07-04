@@ -1,5 +1,12 @@
-import CategoriesRepository from "../repositories/CategoriesRepository"
-// import _ from "lodash"
+import ICategoriesRepository from "../interfaces/ICategoryRepository"
+
+/**
+ * NOTE any reporsitory that implements ICategoriesRepository 
+ * will need to implement the three functions descripbed in the interace
+ * the service will not have knowledge of which databse we use, 
+ * it will be abstracted from it, and the resposibility of implementation 
+ * will be the responsibility of the repository
+ */
 
 interface IRequest {
   name: string;
@@ -9,7 +16,7 @@ interface IRequest {
 
 export default class CreateCategoryService {
 
-  constructor(private categoriesRepository: CategoriesRepository) {
+  constructor(private categoriesRepository: ICategoriesRepository) {
   }
 
   public createObject({ name, description }: IRequest): IRequest {
