@@ -8,10 +8,15 @@ interface CreateCategoryDTO {
 
 
 export default class CategoriesRepository {
-  private categories: CreateCategoryDTO[];
+  private categories: Category[];
 
   constructor() {
     this.categories = [];
+  }
+
+  public findByName(name: string): Category | undefined {
+    const category = this.categories.find(category => category.name === name);
+    return category
   }
 
   public create({ description, name }: CreateCategoryDTO): Category {
@@ -21,7 +26,11 @@ export default class CategoriesRepository {
       created_at: new Date()
     });
     this.categories.push(category)
+    console.log(this.categories)
     return category
+  }
+  public list(): Category[] {
+    return this.categories;
   }
 }
 
