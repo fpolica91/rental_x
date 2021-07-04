@@ -19,7 +19,7 @@ export default class CreateCategoryService {
   constructor(private categoriesRepository: ICategoriesRepository) {
   }
 
-  public createObject({ name, description }: IRequest): IRequest {
+  private createObject({ name, description }: IRequest): IRequest {
     return { name, description }
   }
 
