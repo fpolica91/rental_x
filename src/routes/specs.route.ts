@@ -2,6 +2,7 @@ import { Router } from "express"
 import SpecsRepository from "../modules/cars/repositories/SpecsRepository"
 import CreateSpecsService from "../modules/cars/services/CreateSpecsService"
 
+
 const specsRepository = new SpecsRepository()
 
 const specRouter = Router()

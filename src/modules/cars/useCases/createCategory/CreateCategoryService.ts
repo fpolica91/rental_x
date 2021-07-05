@@ -1,4 +1,4 @@
-import ICategoriesRepository from "../interfaces/ICategoryRepository"
+import ICategoriesRepository from "../../interfaces/ICategoryRepository"
 
 /**
  * NOTE any reporsitory that implements ICategoriesRepository 
@@ -19,18 +19,13 @@ export default class CreateCategoryService {
   constructor(private categoriesRepository: ICategoriesRepository) {
   }
 
-  private createObject({ name, description }: IRequest): IRequest {
-    return { name, description }
-  }
 
   public execute({ name, description }: IRequest): IRequest {
     const categoriesAlreadyExists = this.categoriesRepository.findByName(name)
     if (categoriesAlreadyExists) {
       throw new Error("category already exists")
     }
-    const category = this.createObject({ name, description })
-    this.categoriesRepository.create(category)
-    return category
+    return this.categoriesRepository.create({ name, description })
   }
 
 }

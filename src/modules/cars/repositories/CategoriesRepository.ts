@@ -27,7 +27,6 @@ export default class CategoriesRepository implements ICategoriesRepository {
       created_at: new Date()
     });
     this.categories.push(category)
-    console.log(this.categories)
     return category
   }
 
